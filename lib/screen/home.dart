@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                           height: 30,
                         ),
                         Text(
-                          "Hi Kemane",
+                          "Hi ${loginProvider.prenom}",
                           style: TextStyle(
                             fontSize: size.width * 0.06,
                             fontWeight: FontWeight.w500,

@@ -24,6 +24,8 @@ class UtilisateurController {
         case 200:
           prefs.setString("email", email);
           prefs.setString("password", password);
+          prefs.setString("matricule", jsonDecode(response.body)["matricule"]);
+          prefs.setString("prenom", jsonDecode(response.body)["prenom"]);
           return "success";
         default:
           return "error";
