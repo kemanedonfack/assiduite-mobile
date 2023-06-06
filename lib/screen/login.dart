@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
   TextEditingController emailController = TextEditingController();
-  TextEditingController matriculeController = TextEditingController();
+  TextEditingController mdpController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -56,38 +56,54 @@ class LoginScreen extends StatelessWidget {
                         InputWidget("Email MyIUC", TextInputType.emailAddress,
                             emailController, Icons.email),
                         SizedBox(height: size.height * 0.03),
-                        InputWidget("Matricule", TextInputType.visiblePassword,
-                            matriculeController, Icons.lock),
+                        InputWidget(
+                            "Mot de passe",
+                            TextInputType.visiblePassword,
+                            mdpController,
+                            Icons.lock),
                         SizedBox(height: size.height * 0.05),
-                        Material(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Theme.of(context).primaryColor,
-                          child: MaterialButton(
-                            minWidth: MediaQuery.of(context).size.width,
-                            onPressed: () async {
-                              // if (formKey.currentState!.validate()) {
-                              //   await loginProvider.loginUser(
-                              //       emailController.text,
-                              //       matriculeController.text);
-                              // }
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          HomeScreen()));
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 18),
-                              child: Text(
-                                "Connexion",
-                                style: TextStyle(
+                        loginProvider.isloading
+                            ? Material(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Theme.of(context).primaryColor,
+                                child: MaterialButton(
+                                  minWidth: MediaQuery.of(context).size.width,
+                                  onPressed: () {},
+                                  child: const CircularProgressIndicator(
                                     color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              )
+                            : Material(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Theme.of(context).primaryColor,
+                                child: MaterialButton(
+                                  minWidth: MediaQuery.of(context).size.width,
+                                  onPressed: () async {
+                                    if (formKey.currentState!.validate()) {
+                                      await loginProvider.login(
+                                          emailController.text,
+                                          mdpController.text,
+                                          context);
+                                    }
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) =>
+                                    //             HomeScreen()));
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 18),
+                                    child: Text(
+                                      "Connexion",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),

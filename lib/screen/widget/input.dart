@@ -27,7 +27,7 @@ class InputWidget extends StatelessWidget {
           minLines: inputType == TextInputType.multiline ? 3 : 1,
           maxLines: inputType == TextInputType.multiline ? 7 : 1,
           obscureText: inputType == TextInputType.visiblePassword
-              ? loginProvider.hideMatricule
+              ? loginProvider.hidemdp
               : false,
           keyboardType: inputType,
           decoration: InputDecoration(
@@ -43,7 +43,7 @@ class InputWidget extends StatelessWidget {
                       loginProvider.tooglePassword();
                     },
                     child: Icon(
-                      loginProvider.hideMatricule
+                      loginProvider.hidemdp
                           ? Icons.visibility_off
                           : Icons.visibility,
                       color: Theme.of(context).primaryColor,
