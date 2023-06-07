@@ -1,17 +1,16 @@
 import 'dart:convert';
 import 'package:assiduite/utils/constant.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AssiduiteController {
 
   Future<String> present(String matricule) async {
-    // final prefs = await SharedPreferences.getInstance();
-    // String email = prefs.getString("email").toString();
-    // String password = prefs.getString("password").toString();
+    final prefs = await SharedPreferences.getInstance();
+    String email = prefs.getString("email").toString();
+    String password = prefs.getString("password").toString();
 
     try {
-      String email = 'admin@gmail.com';
-      String password = 'admin';
       String basicAuth =
           'Basic ${base64.encode(utf8.encode('$email:$password'))}';
 
@@ -38,13 +37,11 @@ class AssiduiteController {
   }
 
 Future<String> initDay() async {
-    // final prefs = await SharedPreferences.getInstance();
-    // String email = prefs.getString("email").toString();
-    // String password = prefs.getString("password").toString();
+    final prefs = await SharedPreferences.getInstance();
+    String email = prefs.getString("email").toString();
+    String password = prefs.getString("password").toString();
 
     try {
-      String email = 'admin@gmail.com';
-      String password = 'admin';
       String basicAuth =
           'Basic ${base64.encode(utf8.encode('$email:$password'))}';
 

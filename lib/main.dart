@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'provider/ScannerProvider.dart';
+import 'provider/AssiduiteProvider.dart';
 import 'provider/utilisateurProvider.dart';
 import 'screen/absence.dart';
 import 'screen/home.dart';
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Gilroy',
           primarySwatch: primary,
         ),
-        home: HomeScreen(),
+        home: LoginScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

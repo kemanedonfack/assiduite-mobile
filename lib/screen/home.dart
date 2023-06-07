@@ -3,7 +3,7 @@ import 'package:assiduite/screen/widget/input.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/ScannerProvider.dart';
+import '../provider/AssiduiteProvider.dart';
 import '../provider/utilisateurProvider.dart';
 import 'request.dart';
 
