@@ -1,7 +1,9 @@
+import 'package:assiduite/screen/qrscanner.dart';
 import 'package:assiduite/screen/widget/input.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/ScannerProvider.dart';
 import '../provider/utilisateurProvider.dart';
 import 'request.dart';
 
@@ -16,6 +18,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final loginProvider = Provider.of<UtilisateurProvider>(context);
+    final assiduiteProvider = Provider.of<AssiduiteProvider>(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -105,8 +108,17 @@ class HomeScreen extends StatelessWidget {
                                   context,
                                   Colors.red),
                             ),
-                            _buildCircleIcon(Icons.qr_code_scanner, "Scanner",
-                                context, Colors.blue),
+                            InkWell(
+                              onTap: () {
+                                assiduiteProvider.initDay();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => QRScanner()));
+                              },
+                              child: _buildCircleIcon(Icons.qr_code_scanner,
+                                  "Scanner", context, Colors.blue),
+                            ),
                           ],
                         ),
                         SizedBox(

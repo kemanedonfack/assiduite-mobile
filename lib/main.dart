@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'provider/ScannerProvider.dart';
 import 'provider/utilisateurProvider.dart';
 import 'screen/absence.dart';
 import 'screen/home.dart';
 import 'screen/login.dart';
+import 'screen/qrscanner.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UtilisateurProvider()),
+        ChangeNotifierProvider(create: (context) => AssiduiteProvider()),
       ],
       child: MaterialApp(
         title: 'Assiduité',
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Gilroy',
           primarySwatch: primary,
         ),
-        home: LoginScreen(),
+        home: HomeScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

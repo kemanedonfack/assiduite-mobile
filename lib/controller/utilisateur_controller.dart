@@ -36,25 +36,4 @@ class UtilisateurController {
     }
   }
 
-  Future<String> checkOTP(otp, userId) async {
-    try {
-      final response = await http.get(
-        Uri.parse('$BASE_URL/users/numero/base/$userId/opt/$otp'),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      );
-      print(response.body);
-      print(response.statusCode);
-      switch (response.statusCode) {
-        case 200:
-          return "success";
-        default:
-          return "error";
-      }
-    } catch (e) {
-      print("error ${e.toString()}");
-      return "error";
-    }
-  }
 }
