@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AssiduiteController {
-
   Future<String> present(String matricule) async {
     final prefs = await SharedPreferences.getInstance();
     String email = prefs.getString("email").toString();
@@ -15,11 +14,12 @@ class AssiduiteController {
           'Basic ${base64.encode(utf8.encode('$email:$password'))}';
 
       final response = await http.get(
-          Uri.parse('$BASE_URL/assiduites/present/$matricule'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': basicAuth
-          },);
+        Uri.parse('$BASE_URL/assiduites/present/$matricule'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': basicAuth
+        },
+      );
       print(response.body);
       print(response.statusCode);
       switch (response.statusCode) {
@@ -36,7 +36,7 @@ class AssiduiteController {
     }
   }
 
-Future<String> initDay() async {
+  Future<String> initDay() async {
     final prefs = await SharedPreferences.getInstance();
     String email = prefs.getString("email").toString();
     String password = prefs.getString("password").toString();
@@ -46,11 +46,12 @@ Future<String> initDay() async {
           'Basic ${base64.encode(utf8.encode('$email:$password'))}';
 
       final response = await http.get(
-          Uri.parse('$BASE_URL/assiduites/initday'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': basicAuth
-          },);
+        Uri.parse('$BASE_URL/assiduites/initday'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': basicAuth
+        },
+      );
       print(response.body);
       print(response.statusCode);
       switch (response.statusCode) {
